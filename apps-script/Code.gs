@@ -11,7 +11,7 @@ function ss_(){ return SpreadsheetApp.openById(SHEET_ID); }
 function sheet_(name, cols){
   let s = ss_().getSheetByName(name);
   if (!s){ s = ss_().insertSheet(name); s.appendRow(cols); s.setFrozenRows(1); }
-  if (name === SH_REG) s.getRange(1, 1, s.getMaxRows(), cols.length).setNumberFormat('@');
+  s.getRange(1, 1, s.getMaxRows(), cols.length).setNumberFormat('@');
   return s;
 }
 function out_(o){ return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON); }
@@ -48,7 +48,7 @@ function doPost(e){
   } finally { lock.releaseLock(); }
 }
 
-function add_(s, arr){ s.getRange(s.getLastRow() + 1, 1, 1, arr.length).setNumberFormat('@').setValues([arr.map(String)]); }
+function add_(s, arr){ if (s.getLastRow() >= s.getMaxRows()) s.insertRowsAfter(s.getMaxRows(), 50); s.getRange(s.getLastRow() + 1, 1, 1, arr.length).setNumberFormat('@').setValues([arr.map(String)]); }
 function register_(b){
   const name = str_(b.name, 120).trim(), phone = str_(b.phone, 30).trim(), email = str_(b.email, 160).trim();
   if (!b.id || !b.token || !name || !phone) return {ok: false, error: 'Thiếu họ tên hoặc số điện thoại.'};
@@ -75,7 +75,7 @@ function visit_(b){
   if (!id) return {ok: false};
   const ids = s.getRange(Math.max(2, s.getLastRow() - 3000), 1, Math.min(3001, Math.max(1, s.getLastRow() - 1)), 2).getValues();
   if (ids.some(r => r[0] === id && String(r[1]).slice(0,10) === day)) return {ok: true};
-  s.appendRow([id, day, str_(b.source, 40) || 'direct', now_()]);
+  add_(s, [id, day, str_(b.source, 40) || 'direct', now_()]);
   return {ok: true};
 }
 function adminList_(){
