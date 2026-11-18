@@ -23,8 +23,6 @@ function rows_(s, cols){
   return v.map((r, i) => { const o = {_row: i + 2}; cols.forEach((c, j) => o[c] = r[j] instanceof Date ? Utilities.formatDate(r[j], 'Asia/Ho_Chi_Minh', "yyyy-MM-dd'T'HH:mm:ss") : r[j]); return o; });
 }
 function findReg_(s, id){ return rows_(s, REG_COLS).find(r => r.id === id); }
-const ADMIN_KEY = '__ADMIN_KEY__'; // mật khẩu trang quản trị
-function checkKey_(k){ return k === ADMIN_KEY; }
 
 function doGet(){ return out_({ok: true, service: 'e4b'}); }
 
@@ -36,12 +34,6 @@ function doPost(e){
     if (a === 'dang-ky') return out_(register_(b));
     if (a === 'bao-thanh-toan') return out_(markPaid_(b));
     if (a === 'luot-truy-cap') return out_(visit_(b));
-    if (a && a.startsWith('admin-')){
-      if (!checkKey_(b.key)) return out_({ok: false, error: 'Sai mật khẩu quản trị.', auth: false});
-      if (a === 'admin-list') return out_(adminList_());
-      if (a === 'admin-update') return out_(adminUpdate_(b));
-      if (a === 'admin-import') return out_(adminImport_(b));
-    }
     return out_({ok: false, error: 'Yêu cầu không hợp lệ.'});
   } catch (err) {
     return out_({ok: false, error: 'Lỗi máy chủ: ' + err.message});
@@ -77,28 +69,4 @@ function visit_(b){
   if (ids.some(r => r[0] === id && String(r[1]).slice(0,10) === day)) return {ok: true};
   add_(s, [id, day, str_(b.source, 40) || 'direct', now_()]);
   return {ok: true};
-}
-function adminList_(){
-  return {ok: true, statuses: STATUSES,
-    regs: rows_(sheet_(SH_REG, REG_COLS), REG_COLS).map(r => { delete r.token; return r; }),
-    visits: rows_(sheet_(SH_VIS, VIS_COLS), VIS_COLS).map(r => ({day: String(r.day).slice(0,10), source: r.source}))};
-}
-function adminUpdate_(b){
-  const s = sheet_(SH_REG, REG_COLS), ex = findReg_(s, b.id);
-  if (!ex) return {ok: false, error: 'Không tìm thấy khách.'};
-  ['name','phone','email','plan','price','status','note','paidReportedAt'].forEach(c => {
-    if (b.fields && c in b.fields) s.getRange(ex._row, REG_COLS.indexOf(c) + 1).setValue(str_(b.fields[c], 500));
-  });
-  s.getRange(ex._row, REG_COLS.indexOf('updatedAt') + 1).setValue(now_());
-  return {ok: true};
-}
-function adminImport_(b){
-  const s = sheet_(SH_REG, REG_COLS), have = new Set(rows_(s, REG_COLS).map(r => r.orderCode));
-  let n = 0;
-  (b.rows || []).forEach(r => {
-    if (!r.orderCode || have.has(r.orderCode)) return;
-    const row = Object.assign({id: Utilities.getUuid(), token: Utilities.getUuid(), status: 'Mới đăng ký'}, r);
-    add_(s, REG_COLS.map(c => row[c] || '')); n++;
-  });
-  return {ok: true, imported: n};
 }
