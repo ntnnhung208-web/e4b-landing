@@ -11,6 +11,7 @@ function ss_(){ return SpreadsheetApp.openById(SHEET_ID); }
 function sheet_(name, cols){
   let s = ss_().getSheetByName(name);
   if (!s){ s = ss_().insertSheet(name); s.appendRow(cols); s.setFrozenRows(1); }
+  if (name === SH_REG) s.getRange(1, 1, s.getMaxRows(), cols.length).setNumberFormat('@');
   return s;
 }
 function out_(o){ return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON); }
@@ -47,11 +48,11 @@ function doPost(e){
   } finally { lock.releaseLock(); }
 }
 
-function txt_(s){ s.getRange(1, 1, s.getMaxRows(), REG_COLS.length).setNumberFormat('@'); }
+function add_(s, arr){ s.getRange(s.getLastRow() + 1, 1, 1, arr.length).setNumberFormat('@').setValues([arr.map(String)]); }
 function register_(b){
   const name = str_(b.name, 120).trim(), phone = str_(b.phone, 30).trim(), email = str_(b.email, 160).trim();
   if (!b.id || !b.token || !name || !phone) return {ok: false, error: 'Thiếu họ tên hoặc số điện thoại.'};
-  const s = sheet_(SH_REG, REG_COLS), ex = findReg_(s, str_(b.id, 64)); txt_(s);
+  const s = sheet_(SH_REG, REG_COLS), ex = findReg_(s, str_(b.id, 64));
   const vals = {name, phone, email, plan: str_(b.plan, 200), price: str_(b.price, 40), level: str_(b.level, 60), source: str_(b.source, 40), updatedAt: now_()};
   if (ex){
     if (ex.token !== b.token) return {ok: false, error: 'Không cập nhật được đăng ký.'};
@@ -59,11 +60,11 @@ function register_(b){
     return {ok: true, orderCode: ex.orderCode};
   }
   const row = Object.assign({id: str_(b.id, 64), token: str_(b.token, 64), orderCode: str_(b.orderCode, 30), createdAt: now_(), status: 'Mới đăng ký', paidReportedAt: '', note: ''}, vals);
-  s.appendRow(REG_COLS.map(c => row[c] || ''));
+  add_(s, REG_COLS.map(c => row[c] || ''));
   return {ok: true, orderCode: row.orderCode};
 }
 function markPaid_(b){
-  const s = sheet_(SH_REG, REG_COLS), ex = findReg_(s, str_(b.id, 64)); txt_(s);
+  const s = sheet_(SH_REG, REG_COLS), ex = findReg_(s, str_(b.id, 64));
   if (!ex || ex.token !== b.token) return {ok: false, error: 'Không tìm thấy đăng ký. Bạn liên hệ Zalo 0876807971 nhé.'};
   s.getRange(ex._row, REG_COLS.indexOf('paidReportedAt') + 1).setValue(now_());
   s.getRange(ex._row, REG_COLS.indexOf('updatedAt') + 1).setValue(now_());
@@ -92,12 +93,12 @@ function adminUpdate_(b){
   return {ok: true};
 }
 function adminImport_(b){
-  const s = sheet_(SH_REG, REG_COLS), have = new Set(rows_(s, REG_COLS).map(r => r.orderCode)); txt_(s);
+  const s = sheet_(SH_REG, REG_COLS), have = new Set(rows_(s, REG_COLS).map(r => r.orderCode));
   let n = 0;
   (b.rows || []).forEach(r => {
     if (!r.orderCode || have.has(r.orderCode)) return;
     const row = Object.assign({id: Utilities.getUuid(), token: Utilities.getUuid(), status: 'Mới đăng ký'}, r);
-    s.appendRow(REG_COLS.map(c => row[c] || '')); n++;
+    add_(s, REG_COLS.map(c => row[c] || '')); n++;
   });
   return {ok: true, imported: n};
 }
