@@ -1,6 +1,5 @@
 /** E4B · Máy chủ nhỏ ghi đăng ký vào Google Sheet (Apps Script)
  *  Triển khai: Deploy → New deployment → Web app → Execute as: Me · Who has access: Anyone
- *  Mật khẩu quản trị lưu ở Project Settings → Script properties → ADMIN_KEY
  */
 const SH_REG = 'Đăng ký', SH_VIS = 'Lượt truy cập';
 const REG_COLS = ['id','token','orderCode','createdAt','name','phone','email','plan','price','level','source','status','paidReportedAt','note','updatedAt'];
@@ -23,7 +22,8 @@ function rows_(s, cols){
   return v.map((r, i) => { const o = {_row: i + 2}; cols.forEach((c, j) => o[c] = r[j] instanceof Date ? Utilities.formatDate(r[j], 'Asia/Ho_Chi_Minh', "yyyy-MM-dd'T'HH:mm:ss") : r[j]); return o; });
 }
 function findReg_(s, id){ return rows_(s, REG_COLS).find(r => r.id === id); }
-function checkKey_(k){ const key = PropertiesService.getScriptProperties().getProperty('ADMIN_KEY'); return key && k === key; }
+const ADMIN_KEY = '__ADMIN_KEY__'; // mật khẩu trang quản trị
+function checkKey_(k){ return k === ADMIN_KEY; }
 
 function doGet(){ return out_({ok: true, service: 'e4b'}); }
 
@@ -59,7 +59,6 @@ function register_(b){
   }
   const row = Object.assign({id: str_(b.id, 64), token: str_(b.token, 64), orderCode: str_(b.orderCode, 30), createdAt: now_(), status: 'Mới đăng ký', paidReportedAt: '', note: ''}, vals);
   s.appendRow(REG_COLS.map(c => row[c] || ''));
-  try { notify_(row); } catch (e) {}
   return {ok: true, orderCode: row.orderCode};
 }
 function markPaid_(b){
@@ -100,10 +99,4 @@ function adminImport_(b){
     s.appendRow(REG_COLS.map(c => row[c] || '')); n++;
   });
   return {ok: true, imported: n};
-}
-function notify_(r){
-  const to = PropertiesService.getScriptProperties().getProperty('NOTIFY_EMAIL');
-  if (!to) return;
-  MailApp.sendEmail(to, 'E4B · Đăng ký mới: ' + r.name + ' · ' + r.plan,
-    ['Mã đơn: ' + r.orderCode, 'Họ tên: ' + r.name, 'SĐT: ' + r.phone, 'Email: ' + r.email, 'Gói: ' + r.plan, 'Giá: ' + r.price, 'Nguồn: ' + (r.source || 'không rõ')].join('\n'));
 }
