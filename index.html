@@ -245,6 +245,34 @@ html{scroll-padding-top:64px}.preview-notice{position:sticky;top:0;z-index:999;b
 .lucy-before-form figure{margin:0;width:100%;max-width:300px;justify-self:center}
 @media(max-width:700px){.lucy-intro-grid{grid-template-columns:minmax(0,1fr);gap:24px}.lucy-intro-section{padding:34px 0}.lucy-intro-copy h2{font-size:28px}.lucy-intro-copy p{font-size:17px}.lucy-before-form{grid-template-columns:minmax(0,1fr);padding:22px 18px;gap:20px}.lucy-before-form figure{max-width:300px}}
 </style>
+<style>
+.promo-nov{padding:40px 0 8px;background:linear-gradient(180deg,#FBF7F1 0%,#FFFFFF 100%)}
+.promo-nov .pn-card{position:relative;overflow:hidden;border-radius:28px;padding:38px 40px;background:radial-gradient(120% 140% at 0% 0%,#5B1E8C 0%,#3A0D63 45%,#24063F 100%);color:#FFFFFF;box-shadow:0 24px 60px rgba(58,13,99,.28);border:1px solid rgba(255,214,150,.35);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px 40px;align-items:center}
+.promo-nov .pn-card:before{content:"";position:absolute;right:-90px;top:-90px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,194,122,.28),rgba(255,194,122,0) 70%)}
+.promo-nov .pn-card:after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#F7C26B,#FFE7B8,#F7941D,#F7C26B)}
+.pn-kicker{display:inline-flex;align-items:center;gap:8px;background:rgba(255,214,150,.14);border:1px solid rgba(255,214,150,.45);color:#FFD9A0;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:900;letter-spacing:.08em}
+.pn-title{font-size:clamp(26px,3.4vw,38px);line-height:1.2;font-weight:900;margin:14px 0 6px;letter-spacing:-.01em}
+.pn-title span{background:linear-gradient(90deg,#FFE3B0,#F7B85A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.pn-sub{font-size:17px;line-height:1.6;color:#E6D6F3;max-width:560px}
+.pn-trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:14.5px;color:#F1E6FA}
+.pn-trust b{color:#FFC27A}
+.pn-ticket{position:relative;background:#FFFDF8;color:#1A1230;border-radius:22px;padding:24px 24px 22px;box-shadow:0 14px 34px rgba(0,0,0,.25)}
+.pn-ticket:before,.pn-ticket:after{content:"";position:absolute;top:96px;width:22px;height:22px;border-radius:50%;background:#3A0D63}
+.pn-ticket:before{left:-11px}.pn-ticket:after{right:-11px}
+.pn-old{font-size:16px;color:#8A80A0;text-decoration:line-through;font-weight:700}
+.pn-price{font-size:clamp(44px,5vw,58px);line-height:1;font-weight:900;color:#E2580B;letter-spacing:-.02em;margin-top:4px}
+.pn-price small{font-size:.42em;font-weight:800;color:#5D0390;margin-left:6px;letter-spacing:0}
+.pn-line{border-top:2px dashed #EADCF5;margin:18px 0 14px}
+.pn-code{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#F7F2FD;border:1px solid #E2CFF3;border-radius:14px;padding:10px 12px 10px 16px}
+.pn-code span{font-size:12px;font-weight:900;letter-spacing:.08em;color:#7A6A92}
+.pn-code b{display:block;font-size:22px;letter-spacing:.08em;color:#5D0390}
+.pn-copy{white-space:nowrap;flex:none;border:0;background:#5D0390;color:#FFFFFF;font:inherit;font-weight:800;font-size:14px;border-radius:10px;padding:9px 12px;cursor:pointer}
+.pn-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:14px;border:0;cursor:pointer;background:linear-gradient(180deg,#FFA43A,#F7941D);color:#2A1300;font:inherit;font-weight:900;font-size:19px;border-radius:14px;padding:16px 18px;box-shadow:0 10px 24px rgba(247,148,29,.45)}
+.pn-cta:hover{filter:brightness(1.05)}
+.pn-note{font-size:13px;color:#6B6380;text-align:center;margin-top:10px}
+.promo-nov .pn-card>*{min-width:0}
+@media(max-width:860px){.promo-nov .pn-card{grid-template-columns:1fr;padding:26px 18px}.pn-ticket{padding:20px 16px}.pn-ticket:before,.pn-ticket:after{display:none}.pn-kicker{font-size:11.5px;letter-spacing:.04em}.pn-price{font-size:40px}.pn-code b{font-size:19px}}
+</style>
 </head>
 <body>
 <script>
@@ -345,6 +373,18 @@ html{scroll-padding-top:64px}.preview-notice{position:sticky;top:0;z-index:999;b
 </div>
 </section>
 
+<sc-if value="{{promoActive}}"><section class="promo-nov" id="uu-dai-thang-11" aria-labelledby="pn-title"><div class="wrap"><div class="pn-card">
+<div style="position:relative;z-index:1"><div class="pn-kicker">🎁 TIN VUI · CHỈ ÁP DỤNG TRONG THÁNG 11</div>
+<h2 class="pn-title" id="pn-title">Tin vui cho bạn đăng ký ngay trên website: <span>chỉ 1.990K trọn lộ trình A0–B2</span></h2>
+<p class="pn-sub">Áp mã <strong style="color:#FFD9A0">COLUCYA0B2</strong> khi điền form đăng ký. Một lần thanh toán cho cả 5 chặng, 140 bài học cùng Cô Lucy — chỉ với 398K/level bài bản.</p>
+<div class="pn-trust"><span>✓ <b>140 bài</b> Cô Lucy trực tiếp giảng</span><span>✓ Web thực hành <b>chấm, chữa bài</b></span><span>✓ Nhóm Zalo hỗ trợ <b>trọn đời</b></span><span>✓ Video <b>xem vô thời hạn</b></span></div></div>
+<div class="pn-ticket" style="z-index:1"><div style="font-size:13px;font-weight:900;letter-spacing:.08em;color:#B34700">TRỌN LỘ TRÌNH A0–B2</div>
+<div class="pn-old" style="margin-top:6px">{{fullPrice}}</div><div class="pn-price">1.990.000đ</div><div style="font-size:15px;font-weight:800;color:#5D0390;margin-top:6px">khi áp mã COLUCYA0B2</div>
+<div class="pn-line"></div>
+<div class="pn-code"><div><span>MÃ ƯU ĐÃI</span><b>COLUCYA0B2</b></div><button type="button" class="pn-copy" onClick="{{copyPromo}}">{{promoCopyLabel}}</button></div>
+<button type="button" class="pn-cta" onClick="{{applyPromo}}">👉 Điền ngay form đăng ký</button>
+<div class="pn-note">Hạn cuối: 23:59 ngày 30/11/2026 (giờ Việt Nam) · Mã tự điền sẵn vào form</div></div>
+</div></div></section></sc-if>
 <section id="video-gioi-thieu" class="lucy-intro-section" aria-labelledby="lucy-intro-heading"><div class="wrap"><div class="lucy-intro-grid"><div class="lucy-intro-copy"><p class="eb">Gặp người sẽ đồng hành cùng bạn</p><h2 id="lucy-intro-heading">Từ mất gốc đến tự tin nói.<br>Cô Lucy sẽ cùng bạn bắt đầu.</h2><p>Nghe Cô Lucy chia sẻ về E4B: một lộ trình để từng bước dùng tiếng Anh trong đời sống và công việc, ngay cả khi bạn bận rộn.</p><div class="lucy-intro-points"><span>Lộ trình A0–B2</span><span>Cô Lucy trực tiếp giảng</span><span>Học theo nhịp của bạn</span></div><p style="margin-top:20px;font-size:15px">Bản English có phụ đề Việt. Bạn có thể chuyển sang Tiếng Việt ngay bên cạnh.</p><a href="#lo-trinh" class="btn btn-line" style="margin-top:20px">Khám phá từng chặng học ↓</a></div><figure class="lucy-hero-media"><div class="lucy-video-tabs" role="tablist" aria-label="Ngôn ngữ video giới thiệu"><button type="button" id="lucy-tab-en" role="tab" aria-selected="true" aria-controls="lucy-video-panel" tabindex="0" data-lucy-language="en">English</button><button type="button" id="lucy-tab-vi" role="tab" aria-selected="false" aria-controls="lucy-video-panel" tabindex="-1" data-lucy-language="vi">Tiếng Việt</button></div><div id="lucy-video-panel" role="tabpanel" aria-labelledby="lucy-tab-en"><video id="lucy-hero-video" class="lucy-direct-video" src="media/e4b-hero-en.mp4" poster="assets/e4b-hero-en-poster.jpg" controls playsinline preload="none" width="720" height="1280" aria-label="Cô Lucy giới thiệu E4B bằng tiếng Anh, có phụ đề Việt">Trình duyệt của bạn chưa hỗ trợ video. <a href="media/e4b-hero-en.mp4">Mở video</a>.</video></div><figcaption class="lucy-video-caption">Chọn English hoặc Tiếng Việt, rồi bấm phát để xem.</figcaption></figure></div></div></section>
 
 <!-- FOR WHO -->
@@ -1101,7 +1141,7 @@ function result(){
  var openingSchedule="<section aria-label=\"Lịch mở các chặng\" style=\"margin:24px 0;padding:20px;background:#F7F2FD;border:1px solid #E6D6F6;border-radius:16px;color:#1A1230\"><h3 style=\"margin:0 0 14px;font-size:23px;line-height:1.4;color:#5D0390\">Lịch mở các chặng</h3><table style=\"width:100%;border-collapse:collapse;font-size:18px;line-height:1.6;text-align:left\"><thead><tr><th scope=\"col\" style=\"padding:10px 6px;border-bottom:2px solid #DCC7EC\">Chặng</th><th scope=\"col\" style=\"padding:10px 6px;border-bottom:2px solid #DCC7EC\">Ngày mở</th></tr></thead><tbody><tr><th scope=\"row\" style=\"padding:10px 6px;border-bottom:1px solid #E6D6F6;font-weight:600\">Chặng 0 – Khởi động</th><td style=\"padding:10px 6px;border-bottom:1px solid #E6D6F6;white-space:nowrap\">15/11/2026</td></tr><tr><th scope=\"row\" style=\"padding:10px 6px;border-bottom:1px solid #E6D6F6;font-weight:600\">Chặng 1 – A1</th><td style=\"padding:10px 6px;border-bottom:1px solid #E6D6F6;white-space:nowrap\">25/11/2026</td></tr><tr><th scope=\"row\" style=\"padding:10px 6px;border-bottom:1px solid #E6D6F6;font-weight:600\">Chặng 2 – A2</th><td style=\"padding:10px 6px;border-bottom:1px solid #E6D6F6;white-space:nowrap\">25/12/2026</td></tr><tr><th scope=\"row\" style=\"padding:10px 6px;border-bottom:1px solid #E6D6F6;font-weight:600\">Chặng 3 – B1</th><td style=\"padding:10px 6px;border-bottom:1px solid #E6D6F6;white-space:nowrap\">25/01/2027</td></tr><tr><th scope=\"row\" style=\"padding:10px 6px;border-bottom:1px solid #E6D6F6;font-weight:600\">Chặng 4 – B2</th><td style=\"padding:10px 6px;border-bottom:1px solid #E6D6F6;white-space:nowrap\">25/02/2027</td></tr></tbody></table><p style=\"margin:14px 0 0;font-size:16px;line-height:1.6\">Trong mỗi chặng, bài mới mở theo tuần. Đây là lịch cung cấp nội dung, không phải hạn hoàn thành; bạn học theo nhịp cá nhân và xem lại video không giới hạn thời gian.</p></section>";
  var app=OV.querySelector('#lt-app');
  app.innerHTML='<div class="eb">Kết quả tham khảo</div><h1>'+r.lvl+'</h1><div class="score">Đúng '+tot+'/'+order.length+' câu</div><div class="bands">'+BANDS.map(function(b,i){return '<div><b>'+per[i]+'/5</b>Phần '+b+'</div>'}).join('')+'</div><div class="rec"><h3>Điểm bắt đầu trong lộ trình E4B</h3><p>'+r.why+'</p></div><p class="note">Đây là gợi ý từ bài trắc nghiệm, không phải chứng nhận CEFR hay đánh giá đầy đủ kỹ năng nghe–nói. Bạn không cần mua riêng từng chặng.</p>'+openingSchedule+(promo?'<div style="margin:18px 0;padding:16px 18px;background:#FFF6EE;border:2px dashed #F7941D;border-radius:16px;color:#1A1230;font-size:17px;line-height:1.55"><strong style="color:#B34700">Ưu đãi tháng 11:</strong> nhập mã <strong style="color:#5D0390">COLUCYA0B2</strong> khi đăng ký để học trọn lộ trình A0–B2 chỉ <strong style="color:#E2580B">1.990.000đ</strong> (đến hết 30/11/2026). Không nhập mã: '+price+'.</div>':'')+'<div class="cta"><button class="btn full" id="lt-cta">'+(promo?'Đăng ký trọn lộ trình · 1.990.000đ với mã COLUCYA0B2':'Đăng ký trọn lộ trình A0–B2 · '+price)+'</button><button class="btn ghost full" id="lt-again">Làm lại bài test</button></div>';
- OV.querySelector('#lt-cta').onclick=function(){window.__e4bPick('goi-full');if(promo)setTimeout(function(){var fc=document.getElementById('f-code');if(fc){fc.value='COLUCYA0B2';fc.dispatchEvent(new Event('input',{bubbles:true}));}},200)};OV.querySelector('#lt-again').onclick=init;
+ OV.querySelector('#lt-cta').onclick=function(){window.__e4bPick('goi-full');if(promo)setTimeout(function(){var fc=document.getElementById('f-code');if(fc){fc.value='COLUCYA0B2';fc.dispatchEvent(new Event('input',{bubbles:true}));}},800)};OV.querySelector('#lt-again').onclick=init;
 }
 init();
         })(OV);
@@ -1370,7 +1410,9 @@ init();
     var p2 = function (n) { return (n < 10 ? '0' : '') + n; };
     return {
       cdD: p2(Math.floor(cdl / 86400)), cdH: p2(Math.floor(cdl % 86400 / 3600)), cdM: p2(Math.floor(cdl % 3600 / 60)), cdS: p2(cdl % 60),
-      fullPrice: fullPrice, perLevel: perLevel, upgradePrice: upgradePrice, earlyBird: earlyBird, regularPeriod: !earlyBird,
+      fullPrice: fullPrice, perLevel: perLevel, promoActive: promoActive, promoCopyLabel: self.state.promoCopied ? 'Đã chép ✓' : 'Chép mã',
+      copyPromo: function () { try { navigator.clipboard.writeText('COLUCYA0B2'); } catch (e) {} self.setState({ promoCopied: true }); setTimeout(function(){ self.setState({ promoCopied: false }); }, 2000); },
+      applyPromo: function () { pick(planData[0].opt); setTimeout(function(){ var fc=document.getElementById('f-code'); if(fc){ fc.value='COLUCYA0B2'; fc.dispatchEvent(new Event('input',{bubbles:true})); } }, 800); }, upgradePrice: upgradePrice, earlyBird: earlyBird, regularPeriod: !earlyBird,
       consultation: !!self.state.consultation, submitLabel: self.state.consultation ? 'Gửi yêu cầu tư vấn →' : 'Gửi đăng ký khóa E4B →',
       formUrl: (function () {
         var e = encodeURIComponent, lv = ''; try { lv = window.__e4bLevel || ''; } catch (x) {}
