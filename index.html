@@ -373,18 +373,6 @@ html{scroll-padding-top:64px}.preview-notice{position:sticky;top:0;z-index:999;b
 </div>
 </section>
 
-<sc-if value="{{promoActive}}"><section class="promo-nov" id="uu-dai-thang-11" aria-labelledby="pn-title"><div class="wrap"><div class="pn-card">
-<div style="position:relative;z-index:1"><div class="pn-kicker">🎁 TIN VUI · CHỈ ÁP DỤNG TRONG THÁNG 11</div>
-<h2 class="pn-title" id="pn-title">Tin vui cho bạn đăng ký ngay trên website: <span>chỉ 1.990K trọn lộ trình A0–B2</span></h2>
-<p class="pn-sub">Áp mã <strong style="color:#FFD9A0">COLUCYA0B2</strong> khi điền form đăng ký. Một lần thanh toán cho cả 5 chặng, 140 bài học cùng Cô Lucy — chỉ với 398K/level bài bản.</p>
-<div class="pn-trust"><span>✓ <b>140 bài</b> Cô Lucy trực tiếp giảng</span><span>✓ Web thực hành <b>chấm, chữa bài</b></span><span>✓ Nhóm Zalo hỗ trợ <b>trọn đời</b></span><span>✓ Video <b>xem vô thời hạn</b></span></div></div>
-<div class="pn-ticket" style="z-index:1"><div style="font-size:13px;font-weight:900;letter-spacing:.08em;color:#B34700">TRỌN LỘ TRÌNH A0–B2</div>
-<div class="pn-old" style="margin-top:6px">{{fullPrice}}</div><div class="pn-price">1.990.000đ</div><div style="font-size:15px;font-weight:800;color:#5D0390;margin-top:6px">khi áp mã COLUCYA0B2</div>
-<div class="pn-line"></div>
-<div class="pn-code"><div><span>MÃ ƯU ĐÃI</span><b>COLUCYA0B2</b></div><button type="button" class="pn-copy" onClick="{{copyPromo}}">{{promoCopyLabel}}</button></div>
-<button type="button" class="pn-cta" onClick="{{applyPromo}}">👉 Điền ngay form đăng ký</button>
-<div class="pn-note">Hạn cuối: 23:59 ngày 30/11/2026 (giờ Việt Nam) · Mã tự điền sẵn vào form</div></div>
-</div></div></section></sc-if>
 <section id="video-gioi-thieu" class="lucy-intro-section" aria-labelledby="lucy-intro-heading"><div class="wrap"><div class="lucy-intro-grid"><div class="lucy-intro-copy"><p class="eb">Gặp người sẽ đồng hành cùng bạn</p><h2 id="lucy-intro-heading">Từ mất gốc đến tự tin nói.<br>Cô Lucy sẽ cùng bạn bắt đầu.</h2><p>Nghe Cô Lucy chia sẻ về E4B: một lộ trình để từng bước dùng tiếng Anh trong đời sống và công việc, ngay cả khi bạn bận rộn.</p><div class="lucy-intro-points"><span>Lộ trình A0–B2</span><span>Cô Lucy trực tiếp giảng</span><span>Học theo nhịp của bạn</span></div><p style="margin-top:20px;font-size:15px">Bản English có phụ đề Việt. Bạn có thể chuyển sang Tiếng Việt ngay bên cạnh.</p><a href="#lo-trinh" class="btn btn-line" style="margin-top:20px">Khám phá từng chặng học ↓</a></div><figure class="lucy-hero-media"><div class="lucy-video-tabs" role="tablist" aria-label="Ngôn ngữ video giới thiệu"><button type="button" id="lucy-tab-en" role="tab" aria-selected="true" aria-controls="lucy-video-panel" tabindex="0" data-lucy-language="en">English</button><button type="button" id="lucy-tab-vi" role="tab" aria-selected="false" aria-controls="lucy-video-panel" tabindex="-1" data-lucy-language="vi">Tiếng Việt</button></div><div id="lucy-video-panel" role="tabpanel" aria-labelledby="lucy-tab-en"><video id="lucy-hero-video" class="lucy-direct-video" src="media/e4b-hero-en.mp4" poster="assets/e4b-hero-en-poster.jpg" controls playsinline preload="none" width="720" height="1280" aria-label="Cô Lucy giới thiệu E4B bằng tiếng Anh, có phụ đề Việt">Trình duyệt của bạn chưa hỗ trợ video. <a href="media/e4b-hero-en.mp4">Mở video</a>.</video></div><figcaption class="lucy-video-caption">Chọn English hoặc Tiếng Việt, rồi bấm phát để xem.</figcaption></figure></div></div></section>
 
 <!-- FOR WHO -->
@@ -785,6 +773,18 @@ html{scroll-padding-top:64px}.preview-notice{position:sticky;top:0;z-index:999;b
 <div><span class="registration-kicker">MỘT LỜI NHẮN TỪ CÔ LUCY</span><h3>Nếu bạn đã xem tới đây…</h3><p>Dành thêm một phút nghe Cô Lucy chia sẻ, rồi chọn bước bắt đầu phù hợp với bạn.</p><p style="margin-top:10px">Bạn có thể đăng ký trọn lộ trình hoặc để lại thông tin để được tư vấn.</p><a href="#registration-form" class="btn btn-o">Chọn bước bắt đầu của mình ↓</a></div>
 <figure><video id="lucy-registration-video" class="lucy-direct-video" src="media/e4b-before-registration.mp4" poster="assets/e4b-before-registration-poster.jpg" controls playsinline preload="none" width="720" height="1280" aria-label="Lời nhắn của Cô Lucy trước khi đăng ký E4B">Trình duyệt của bạn chưa hỗ trợ video. <a href="media/e4b-before-registration.mp4">Mở video</a>.</video></figure>
 </div>
+<sc-if value="{{promoActive}}"><div class="promo-nov" id="uu-dai-thang-11" role="region" aria-labelledby="pn-title" style="padding:0;background:none;margin:0 0 18px"><div class="pn-card">
+<div style="position:relative;z-index:1"><div class="pn-kicker">🎁 TIN VUI · CHỈ ÁP DỤNG TRONG THÁNG 11</div>
+<h2 class="pn-title" id="pn-title" style="color:#FFFFFF">Tin vui cho bạn đăng ký ngay trên website: <span>chỉ 1.990K trọn lộ trình A0–B2</span></h2>
+<p class="pn-sub">Áp mã <strong style="color:#FFD9A0">COLUCYA0B2</strong> khi điền form đăng ký. Một lần thanh toán cho cả 5 chặng, 140 bài học cùng Cô Lucy — chỉ với 398K/level bài bản.</p>
+<div class="pn-trust"><span>✓ <b>140 bài</b> Cô Lucy trực tiếp giảng</span><span>✓ Web thực hành <b>chấm, chữa bài</b></span><span>✓ Nhóm Zalo hỗ trợ <b>trọn đời</b></span><span>✓ Video <b>xem vô thời hạn</b></span></div></div>
+<div class="pn-ticket" style="z-index:1"><div style="font-size:13px;font-weight:900;letter-spacing:.08em;color:#B34700">TRỌN LỘ TRÌNH A0–B2</div>
+<div class="pn-old" style="margin-top:6px">{{fullPrice}}</div><div class="pn-price">1.990.000đ</div><div style="font-size:15px;font-weight:800;color:#5D0390;margin-top:6px">khi áp mã COLUCYA0B2</div>
+<div class="pn-line"></div>
+<div class="pn-code"><div><span>MÃ ƯU ĐÃI</span><b>COLUCYA0B2</b></div><button type="button" class="pn-copy" onClick="{{copyPromo}}">{{promoCopyLabel}}</button></div>
+<button type="button" class="pn-cta" onClick="{{applyPromo}}">👉 Điền ngay form đăng ký</button>
+<div class="pn-note">Hạn cuối: 23:59 ngày 30/11/2026 (giờ Việt Nam) · Mã tự điền sẵn vào form</div></div>
+</div></div></sc-if>
 <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:stretch">
 <form id="registration-form" class="glow registration-feature" style="flex:1.45 1 480px;min-width:0;background:#FFFFFF;border-radius:20px;padding:26px 22px;display:flex;flex-direction:column;gap:14px">
 <div class="registration-intro"><span class="registration-kicker">BẮT ĐẦU CÙNG E4B</span><h3>Đăng ký học hoặc nhận tư vấn</h3><p>Chọn gói bạn muốn học. Nếu còn phân vân, chọn <strong>“Chưa chọn gói · Cần tư vấn”</strong>; bạn chưa cần thanh toán.</p></div>
@@ -1412,7 +1412,7 @@ init();
       cdD: p2(Math.floor(cdl / 86400)), cdH: p2(Math.floor(cdl % 86400 / 3600)), cdM: p2(Math.floor(cdl % 3600 / 60)), cdS: p2(cdl % 60),
       fullPrice: fullPrice, perLevel: perLevel, promoActive: promoActive, promoCopyLabel: self.state.promoCopied ? 'Đã chép ✓' : 'Chép mã',
       copyPromo: function () { try { navigator.clipboard.writeText('COLUCYA0B2'); } catch (e) {} self.setState({ promoCopied: true }); setTimeout(function(){ self.setState({ promoCopied: false }); }, 2000); },
-      applyPromo: function () { pick(planData[0].opt); setTimeout(function(){ var fc=document.getElementById('f-code'); if(fc){ fc.value='COLUCYA0B2'; fc.dispatchEvent(new Event('input',{bubbles:true})); } }, 800); }, upgradePrice: upgradePrice, earlyBird: earlyBird, regularPeriod: !earlyBird,
+      applyPromo: function () { self.selectPackage(planData[0].opt); var f=document.getElementById('registration-form'); if(f) f.scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(function(){ var fc=document.getElementById('f-code'); if(fc){ fc.value='COLUCYA0B2'; fc.dispatchEvent(new Event('input',{bubbles:true})); } var nm=document.getElementById('f-name'); if(nm){ try{ nm.focus({preventScroll:true}); }catch(e){} } }, 800); }, upgradePrice: upgradePrice, earlyBird: earlyBird, regularPeriod: !earlyBird,
       consultation: !!self.state.consultation, submitLabel: self.state.consultation ? 'Gửi yêu cầu tư vấn →' : 'Gửi đăng ký khóa E4B →',
       formUrl: (function () {
         var e = encodeURIComponent, lv = ''; try { lv = window.__e4bLevel || ''; } catch (x) {}
