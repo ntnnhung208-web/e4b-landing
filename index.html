@@ -219,7 +219,7 @@ html{scroll-padding-top:64px}.preview-notice{position:sticky;top:0;z-index:999;b
   0%,100%{background-color:#F7941D;box-shadow:0 6px 18px rgba(247,148,29,.35)}
   50%{background-color:#FFB546;box-shadow:0 0 0 6px rgba(247,148,29,.19),0 6px 18px rgba(247,148,29,.46)}
 }
-@media(max-width:760px){.hero-vid{order:-1;max-width:300px!important}}</style>
+.hv2{flex:1 1 440px;min-width:0;max-width:540px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:14px}.hv-item{margin:0;min-width:0}.hv-tag{display:inline-block;background:#5D0390;color:#fff;font-weight:900;font-size:14px;border-radius:999px;padding:6px 12px;margin-bottom:8px}.hv-item video{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;background:#2A0B45;border-radius:20px;box-shadow:0 16px 40px rgba(42,11,69,.2)}.hv-cap{grid-column:1/-1;text-align:center;font-size:14px;color:#6F5C92;margin:2px 0 0}@media(max-width:760px){.hero-vid{order:-1}.hv2{gap:10px}.hv-tag{font-size:12.5px;padding:5px 10px}}</style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
@@ -348,7 +348,8 @@ html{scroll-padding-top:64px}.preview-notice{position:sticky;top:0;z-index:999;b
 </div>
 <p style="font-size:16px;line-height:1.7;color:#5A5270;margin-top:12px">Bắt đầu từ nền tảng, tiến từng bước. Ưu đãi tháng 11: nhập mã <strong>COLUCYA0B2</strong> để học trọn lộ trình chỉ 1.990.000đ.</p>
 </div>
-<div class="hero-vid" style="flex:1 1 330px;min-width:0;max-width:360px;margin:0 auto"><figure class="lucy-hero-media"><div class="lucy-video-tabs" role="tablist" aria-label="Ngôn ngữ video giới thiệu"><button type="button" id="lucy-tab-en" role="tab" aria-selected="true" aria-controls="lucy-video-panel" tabindex="0" data-lucy-language="en">English</button><button type="button" id="lucy-tab-vi" role="tab" aria-selected="false" aria-controls="lucy-video-panel" tabindex="-1" data-lucy-language="vi">Tiếng Việt</button></div><div id="lucy-video-panel" role="tabpanel" aria-labelledby="lucy-tab-en"><video id="lucy-hero-video" class="lucy-direct-video" src="media/e4b-hero-en.mp4" poster="assets/e4b-hero-en-poster.jpg" controls playsinline preload="none" width="720" height="1280" aria-label="Cô Lucy giới thiệu E4B bằng tiếng Anh, có phụ đề Việt">Trình duyệt của bạn chưa hỗ trợ video. <a href="media/e4b-hero-en.mp4">Mở video</a>.</video></div><figcaption class="lucy-video-caption">Chọn English hoặc Tiếng Việt, rồi bấm phát để xem.</figcaption></figure></div>
+<div class="hero-vid hv2"><figure class="hv-item"><div class="hv-tag">🇬🇧 English</div><video class="lucy-direct-video" src="media/e4b-hero-en.mp4" poster="assets/e4b-hero-en-poster.jpg" controls playsinline preload="metadata" width="720" height="1280" aria-label="Cô Lucy giới thiệu E4B bằng tiếng Anh, có phụ đề Việt">Trình duyệt của bạn chưa hỗ trợ video. <a href="media/e4b-hero-en.mp4">Mở video</a>.</video></figure><figure class="hv-item"><div class="hv-tag">🇻🇳 Tiếng Việt</div><video class="lucy-direct-video" src="media/e4b-hero-vi-v2.mp4" poster="assets/e4b-hero-vi-poster.jpg" controls playsinline preload="metadata" width="720" height="1280" aria-label="Cô Lucy giới thiệu E4B bằng tiếng Việt">Trình duyệt của bạn chưa hỗ trợ video. <a href="media/e4b-hero-vi-v2.mp4">Mở video</a>.</video></figure><p class="hv-cap">Cô Lucy giới thiệu E4B · bấm phát để xem</p></div>
+
 </div>
 <div class="wrap">
 <div style="margin-top:40px;background:#FFFFFF;border:1px solid #ECE4F4;border-radius:20px;padding:20px 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:16px 20px">
